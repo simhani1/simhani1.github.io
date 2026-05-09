@@ -20,9 +20,6 @@ permalink:          /:categories/:title/
 timezone:           Asia/Seoul
 new_badge_period:   7
 
-# 분석
-google_analytics:
-
 # 댓글
 comments:
     repo:           simhani1/simhani1.github.io
