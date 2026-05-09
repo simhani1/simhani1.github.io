@@ -1,7 +1,19 @@
----
-title: <% tp.file.title.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/-/g, " ") %>
+<%*
+const fallbackTitle = tp.file.title
+  .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+  .replace(/-/g, " ")
+  .trim();
+const inputTitle = await tp.system.prompt("글 제목을 입력하세요", fallbackTitle);
+const title = (inputTitle || fallbackTitle || "Untitled").trim();
+const fileTitle = title
+  .replace(/[\\/:*?"<>|]/g, "")
+  .replace(/\s+/g, "-");
+await tp.file.rename(`${tp.date.now("YYYY-MM-DD")}-${fileTitle}`);
+tR += `---
+title: ${JSON.stringify(title)}
 tags: []
----
+---`;
+%>
 
 ## 문제 상황
 
