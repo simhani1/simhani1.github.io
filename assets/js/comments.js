@@ -9,7 +9,7 @@ function 댓글_모듈_로드() {
   script.setAttribute("repo", wrapper.dataset.repo);
   script.setAttribute("issue-term", "pathname");
   script.setAttribute("label", "comment 🌟");
-  script.setAttribute("theme", "github-light");
+  script.setAttribute("theme", "preferred-color-scheme");
   script.setAttribute("crossorigin", "anonymous");
   script.async = true;
 
