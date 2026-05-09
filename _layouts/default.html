@@ -1,21 +1,26 @@
+---
+layout: compress
+published: true
+---
+
 <!DOCTYPE html>
-<html>
-  {% include head.html %}
-  <body>
-    {% include nav.html %}
+<html lang="ko">
 
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
+	<head>
+		{% include google-analytics.html %}
+		{% include head.html %}
+	</head>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include footer.html %}
-        </footer>
-      </div>
-    </div>
+	<body>
 
-    {% include analytics.html %}
-  </body>
+		{% include header.html %}
+
+		<div id="content">
+			{{ content }}
+		</div>
+
+		{% include footer.html %}
+
+	</body>
+
 </html>

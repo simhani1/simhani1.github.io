@@ -1,15 +1,14 @@
 ---
-layout: page
-title: About
+title: "About"
 permalink: /about/
 ---
 
-Some information about you!
+## 소개
 
-### More Information
+안녕하세요. 백엔드 개발자 Sim Jonghan입니다.
 
-A place to include any other types of information that you'd like to include about yourself.
+## 연락처
 
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+- **Email**: <{{ site.author_email }}>
+- **GitHub**: [{{ site.social.github | split: "/" | last }}]({{ site.social.github }})
+- **LinkedIn**: [{{ site.social.linkedin | split: "/" | last }}]({{ site.social.linkedin }})

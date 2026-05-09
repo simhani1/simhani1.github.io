@@ -2,45 +2,39 @@
 layout: default
 ---
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
+<article>
+  <div class="title">{{ page.title }}</div>
+  <div class="post-date">{{ page.date | date: "%Y년 %-m월 %-d일" }}</div>
 
-  <div>
-    <span class="date">
-      {{ page.date | date: "%Y-%m-%d" }}
-    </span>
+  <div class="divider"></div>
 
-    <ul class="tag">
-      {% for tag in page.tags %}
-      <li>
-        <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
-          {{ tag }}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
+  <div class="body">{{ content }}</div>
 
-  <div class="entry">
-    {{ content }}
-  </div>
-
-  <div class="pagination">
-    {% if page.previous.url %}
-      <span class="prev" >
-          <a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}">
-            &#xE000; {{ page.previous.title }}
-          </a>
-      </span>
-    {% endif %}
-    {% if page.next.url %}
-      <span class="next" >
-          <a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}">
-            {{ page.next.title }} &#xE001;
-          </a>
-      </span>
-    {% endif %}
-  </div>
-
-  {% include disqus.html %}
+  {% if site.like_api_base %}
+    <div class="like-button-wrapper">
+      <button id="like-button" class="like-button loading" data-api-base="{{ site.like_api_base }}">
+        <span class="like-button-content">
+          <span class="heart-icon">💙</span>
+          <span class="like-count">0</span>
+        </span>
+        <span class="like-button-loader">
+          <span class="loader-dot"></span>
+          <span class="loader-dot"></span>
+          <span class="loader-dot"></span>
+        </span>
+      </button>
+    </div>
+  {% endif %}
 </article>
+
+<div class="comments">{% include comments.html %}</div>
+
+<div class="page-navigation">
+  <a class="home" href="/" title="목록으로 돌아가기"
+    >&larr; 목록으로 돌아가기</a
+  >
+</div>
+
+{% if site.like_api_base %}
+  <script src="{{ "/assets/js/like-button.js" }}"></script>
+{% endif %}

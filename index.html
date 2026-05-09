@@ -2,55 +2,59 @@
 layout: default
 ---
 
-{% if site.posts.size == 0 %}
-  <h2>No post found</h2>
-{% endif %}
+<!-- 글 목록 섹션입니다. -->
+<section>
+  <ul>
+    {% for post in site.posts %}
 
-<div class="posts">
-  {% for post in paginator.posts %}
-    <article class="post">
-      <h1>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h1>
+    <!-- 목록 속 "글 하나"에 해당합니다. -->
+    <list-item>
+      <a href="{{ post.url }}">
+        <!-- 날짜입니다. -->
+        <div class="post-date">
+          <span
+            class="date-text"
+            data-date="{{ post.date | date_to_xmlschema }}"
+          >
+            {{ post.date | date: "%Y년 %-m월 %-d일" }}
+          </span>
+        </div>
 
-      <div>
-        <span class="date">
-          {{ post.date | date: "%Y-%m-%d" }}
-        </span>
+        <!-- 제목입니다. -->
+        <div class="title">{{ post.title }}</div>
 
-        <ul class="tag">
-          {% for tag in post.tags %}
-          <li>
-            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
-              {{ tag }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <span class="prev">
-      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
-        &#xE000; Previous
+        <!-- 요약입니다. -->
+        <div class="excerpt">
+          {{ post.excerpt | strip_html | normalize_whitespace | truncate: 140 }}
+        </div>
       </a>
-    </span>
-  {% endif %}
-  {% if paginator.next_page %}
-    <span class="next">
-      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
-        Next &#xE001;
-      </a>
-    </span>
-  {% endif %}
-</div>
+
+      <!-- 목록 속 "글 하나"와 "글 하나" 사이를 구분하는 선입니다. -->
+      <div class="item-divider"></div>
+    </list-item>
+
+    {% endfor %}
+  </ul>
+
+  <!-- 새로 작성한 글에 "새 글" 표시를 붙여주는 스크립트입니다. -->
+  <script data-period="{{ site.new_badge_period | default: 7 }}">
+    /**
+     * "새로"의 기준은 _config.yml 파일에 설정된 new_badge_period 값에 따라 결정됩니다.
+     * 그런데 js 코드에다가 liquid 변수를 바로 써버리면 IDE가 싫어합니다. 그래서 <script> 태그의 속성으로 받았어요.
+     */
+    const period = document.currentScript.getAttribute("data-period");
+    const dateTexts = document.getElementsByClassName("date-text");
+
+    for (const dateText of dateTexts) {
+      const createDate = new Date(dateText.getAttribute("data-date"));
+      const currentDate = new Date();
+
+      const diff =
+        (currentDate.getTime() - createDate.getTime()) / (1000 * 86400);
+
+      if (diff < parseInt(period)) {
+        dateText.innerText += " · 새 글";
+      }
+    }
+  </script>
+</section>
