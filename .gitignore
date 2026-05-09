@@ -23,7 +23,7 @@ pnpm-lock.yaml
 
 # Obsidian local state
 .obsidian/
-_templates/
+_drafts/
 
 # Local environment
 .env

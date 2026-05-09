@@ -40,7 +40,7 @@ sass:
 
 # 기타 파라미터
 include:            [ "robots.txt" ]
-exclude:            [ "LICENSE", "README.md", "README.ko.md", "CNAME", "Gemfile", "drafts", "_templates" ]
+exclude:            [ "LICENSE", "README.md", "README.ko.md", "CNAME", "Gemfile", "_drafts", "_templates" ]
 plugins:
   - jekyll-sitemap
 
