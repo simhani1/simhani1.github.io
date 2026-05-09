@@ -1,10 +1,30 @@
-_site
+# macOS
 .DS_Store
-.jekyll
+
+# Jekyll
+_site/
+.jekyll-cache/
 .jekyll-metadata
-.jekyll-cache
-.bundle
-.sass-cache
-node_modules
-package.json
-vendor/bundle
+.sass-cache/
+
+# Ruby/Bundler
+.bundle/
+vendor/bundle/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Obsidian local state
+.obsidian/
+_templates/
+
+# Local environment
+.env
+.env.*
