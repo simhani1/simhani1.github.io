@@ -20,6 +20,30 @@ published: true
 
 		{% include footer.html %}
 
+		<script>
+			(function () {
+				var 머메이드_블록 = document.querySelectorAll(".language-mermaid");
+				if (!머메이드_블록.length) return;
+
+				머메이드_블록.forEach(function (block) {
+					var 코드 = block.textContent.trim();
+					var 다이어그램 = document.createElement("pre");
+					다이어그램.className = "mermaid";
+					다이어그램.textContent = 코드;
+					block.replaceWith(다이어그램);
+				});
+
+				var script = document.createElement("script");
+				script.src = "{{ "/assets/js/mermaid.min.js" }}";
+				script.onload = function () {
+					var 테마 = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "default";
+					mermaid.initialize({ startOnLoad: false, theme: 테마 });
+					mermaid.run({ querySelector: "pre.mermaid" });
+				};
+				document.body.appendChild(script);
+			})();
+		</script>
+
 	</body>
 
 </html>
