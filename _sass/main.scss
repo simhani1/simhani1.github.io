@@ -648,6 +648,35 @@ article, section, .footer, .comments {
   background: var(--border-secondary);
 }
 
+// 태그 칩
+.post-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1;
+    text-transform: none;
+    text-decoration: none;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 999px;
+    padding: 5px 10px;
+
+    &::before {
+      content: "#";
+      margin-right: 1px;
+      opacity: 0.6;
+    }
+  }
+}
+
 .item-divider {
   height: 1px;
   margin: 1em 0;

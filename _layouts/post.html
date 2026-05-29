@@ -4,6 +4,15 @@ layout: default
 
 <article>
   <div class="title">{{ page.title }}</div>
+
+  {% if page.tags and page.tags.size > 0 %}
+    <ul class="post-tags">
+      {% for tag in page.tags %}
+        <li>{{ tag }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
   <div class="post-date">{{ page.date | date: "%Y년 %-m월 %-d일" }}</div>
 
   <div class="divider"></div>
