@@ -1,5 +1,6 @@
 ---
 title: "DB는 롤백됐는데 알림은 갔다: Transactional Outbox 패턴 도입기"
+date: 2026-05-29 09:00:00 +0900
 tags:
   - 메시지큐
   - 아웃박스
