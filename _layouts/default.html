@@ -30,14 +30,14 @@ published: true
 					var 다이어그램 = document.createElement("pre");
 					다이어그램.className = "mermaid";
 					다이어그램.textContent = 코드;
-					block.replaceWith(다이어그램);
+					var 교체대상 = block.closest("pre") || block;
+					교체대상.replaceWith(다이어그램);
 				});
 
 				var script = document.createElement("script");
 				script.src = "{{ "/assets/js/mermaid.min.js" }}";
 				script.onload = function () {
-					var 테마 = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "default";
-					mermaid.initialize({ startOnLoad: false, theme: 테마 });
+					mermaid.initialize({ startOnLoad: false, theme: "default" });
 					mermaid.run({ querySelector: "pre.mermaid" });
 				};
 				document.body.appendChild(script);

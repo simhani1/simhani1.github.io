@@ -368,6 +368,21 @@ pre {
     margin: 0;
   }
 }
+
+// Mermaid 다이어그램은 테마와 무관하게 흰 배경을 유지한다 (다크모드 가독성)
+pre.mermaid {
+  background-color: #ffffff;
+  color: #24292f;
+  border: 1px solid var(--border-primary);
+  text-align: center;
+  overflow-x: auto;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+}
 table {
   width: 100%;
   table-layout: fixed;
