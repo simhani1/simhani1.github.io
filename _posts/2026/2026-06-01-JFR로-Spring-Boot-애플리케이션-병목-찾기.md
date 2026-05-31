@@ -94,15 +94,15 @@ k6 run k6/script-heavy-bad.js
 
 > bad 결과
 
-![](assets/images/Pasted%20image%2020260601032341.png)
+![](/assets/images/Pasted%20image%2020260601032341.png)
 
-![](assets/images/Pasted%20image%2020260601040620.png)
+![](/assets/images/Pasted%20image%2020260601040620.png)
 
 > good 결과
 
-![](assets/images/Pasted%20image%2020260601033220.png)
+![](/assets/images/Pasted%20image%2020260601033220.png)
 
-![](assets/images/Pasted%20image%2020260601040646.png)
+![](/assets/images/Pasted%20image%2020260601040646.png)
 
 이렇게 테스트를 수행하고 생성된 JFR 파일을 JMC에서 열면 다양한 정보를 볼 수 있고 특히 호출된 메서드를 모두 추적할 수 있다. 위에서 아래 방향으로 메서드가 실행되는 것이다.
 
@@ -110,20 +110,20 @@ k6 run k6/script-heavy-bad.js
 
 ```java
 public final class String {
-    ...
+
 	public boolean matches(String regex) {  
 	    return Pattern.matches(regex, this);  
 	}
 }
 
 public final class Pattern {
-    ...
-    public static boolean matches(String regex, CharSequence input) { 
+
+	public static boolean matches(String regex, CharSequence input) { 
 	    Pattern p = Pattern.compile(regex);  
 	    Matcher m = p.matcher(input);  
 	    return m.matches();  
 	}
-	...
+	
 	public static Pattern compile(String regex) {  
 	    return new Pattern(regex, 0);  // 객체를 매번 생성
 	}	
@@ -132,7 +132,7 @@ public final class Pattern {
 
 이처럼 왼쪽과 오른쪽의 힙 메모리 사용량에서도 차이를 볼 수 있다.
 
-![](assets/images/Pasted%20image%2020260601040109.png)
+![](/assets/images/Pasted%20image%2020260601040109.png)
 
 이처럼 분석 결과를 바탕으로 코드의 예상 문제 지점을 발견하고 개선할 수 있다. 실제 위 분석표를 GPT에게 분석을 요청했을 때 받은 응답은 다음과 같다.
 
