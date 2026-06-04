@@ -1,6 +1,7 @@
 ---
 title: "@TransactionalEventListener(AFTER_COMMIT)에서 DB 업데이트가 반영되지 않는다"
 date: 2026-06-04 01:41:07 +0900
+excerpt: "AFTER_COMMIT 리스너는 DB 커밋이 끝난 뒤 실행돼 엔티티 변경이 반영되지 않는다. REQUIRES_NEW로 새 트랜잭션을 열어 해결한 과정을 정리했다."
 tags:
   - Spring
   - 트랜잭션
