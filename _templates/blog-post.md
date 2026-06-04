@@ -12,6 +12,7 @@ await tp.file.rename(`${tp.date.now("YYYY-MM-DD")}-${fileTitle}`);
 tR += `---
 title: ${JSON.stringify(title)}
 date: ${tp.date.now("YYYY-MM-DD HH:mm:ss")} +0900
+excerpt: ""
 tags: []
 ---`;
 %>
