@@ -1,6 +1,7 @@
 ---
 title: "DB는 롤백됐는데 알림은 갔다: Transactional Outbox 패턴 도입기"
 date: 2026-05-29 09:00:00 +0900
+excerpt: "DB 트랜잭션과 외부 메시지 발행이 원자적으로 묶이지 않아 생기는 정합성 문제를, Transactional Outbox 패턴으로 메시지를 먼저 기록하고 별도 디스패처가 발행하도록 분리해 해결했다."
 tags:
   - 메시지큐
   - 아웃박스

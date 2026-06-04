@@ -1,6 +1,7 @@
 ---
 title: JFR로 Spring Boot 애플리케이션 병목 찾기
 date: 2026-06-01 02:50:56 +0900
+excerpt: "디버깅만으로는 찾기 어려운 Spring Boot 병목을, JFR과 JMC로 실행 흐름을 분석해 String.matches()의 Pattern 반복 컴파일 같은 성능 문제를 추적·개선한 방법을 정리했다."
 tags:
   - JDK
   - K6
